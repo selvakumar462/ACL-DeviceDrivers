@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Library</OutputType>
+    <AssemblyName>ACLDevicePlatform.CoreFramework</AssemblyName>
+    <RootNamespace>ACLDevicePlatform.CoreFramework</RootNamespace>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <SignAssembly>false</SignAssembly>
+    <!-- <AssemblyOriginatorKeyFile>..\..\ACLDevicePlatform.snk</AssemblyOriginatorKeyFile> -->
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+  </PropertyGroup>
+
+
+  <!-- <ItemGroup>
+    <None Include="..\..\ACLDevicePlatform.snk">
+      <Link>ACLDevicePlatform.snk</Link>
+    </None>
+  </ItemGroup> -->
+</Project>
