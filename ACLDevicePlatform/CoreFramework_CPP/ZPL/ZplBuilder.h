@@ -170,7 +170,20 @@ namespace ZPL {
          * @param y Y coordinate
          * @return true if valid, false otherwise
          */
+        /**
+         * @brief Validate coordinates are within label bounds
+         * @param x X coordinate
+         * @param y Y coordinate
+         * @return true if valid, false otherwise
+         */
         bool ValidateCoordinates(int x, int y) const;
+
+        /**
+         * @brief Sanitize text for ZPL to avoid control character conflicts
+         * @param input Raw input text
+         * @return Sanitized text with hex escaping for special characters
+         */
+        std::string Sanitize(const std::string& input) const;
     };
 
     /**
