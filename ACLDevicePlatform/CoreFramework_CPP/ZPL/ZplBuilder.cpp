@@ -38,7 +38,7 @@ namespace ZPL {
             oss << ",," << rotation;
         }
         
-        oss << "^FD" << text << "^FS";
+        oss << "^FH^FD" << Sanitize(text) << "^FS";
         AddCommand(oss.str());
         return *this;
     }
@@ -58,7 +58,7 @@ namespace ZPL {
         
         oss << "," << height << ",Y,N";
         AddCommand(oss.str());
-        AddCommand("^FD" + text + "^FS");
+        AddCommand("^FH^FD" + Sanitize(text) + "^FS");
         return *this;
     }
 
@@ -88,7 +88,7 @@ namespace ZPL {
         std::ostringstream oss;
         oss << "^FO" << x << "," << y 
             << "^FB" << width << "," << lines << ",0,L,1" 
-            << "^FD" << text << "^FS";
+            << "^FH^FD" << Sanitize(text) << "^FS";
         AddCommand(oss.str());
         return *this;
     }
@@ -105,7 +105,7 @@ namespace ZPL {
         std::ostringstream oss;
         oss << "^FO" << x << "," << y 
             << "^AF" << "," << height << "," << width 
-            << "^FD" << text << "^FS";
+            << "^FH^FD" << Sanitize(text) << "^FS";
         AddCommand(oss.str());
         return *this;
     }
@@ -160,6 +160,25 @@ namespace ZPL {
 
     bool ZplBuilder::ValidateCoordinates(int x, int y) const {
         return (x >= 0 && x <= m_width && y >= 0 && y <= m_height);
+    }
+
+    std::string ZplBuilder::Sanitize(const std::string& input) const {
+        std::string result;
+        result.reserve(input.length() * 1.2); // Small reserve for potential expansion
+        
+        for (char c : input) {
+            if (c == '_') {
+                result += "_5F";
+            } else if (c == '^') {
+                result += "_5E";
+            } else if (c == '~') {
+                result += "_7E";
+            } else {
+                result += c;
+            }
+        }
+        
+        return result;
     }
 
 } // namespace ZPL
