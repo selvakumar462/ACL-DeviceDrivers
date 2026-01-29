@@ -1,2 +1,2 @@
 # ACL-DeviceDrivers
-ACL DeviceDrivers
+ACL DeviceDrivers to manage printers and scanners.
