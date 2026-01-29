@@ -84,10 +84,10 @@ namespace ZPL {
         return *this;
     }
 
-    ZplBuilder& ZplBuilder::AddFieldBlock(int x, int y, int width, int lines, const std::string& text) {
+    ZplBuilder& ZplBuilder::AddFieldBlock(int x, int y, int width, int lines, const std::string& text, char alignment) {
         std::ostringstream oss;
         oss << "^FO" << x << "," << y 
-            << "^FB" << width << "," << lines << ",0,L,1" 
+            << "^FB" << width << "," << lines << ",0," << alignment << ",1" 
             << "^FH^FD" << Sanitize(text) << "^FS";
         AddCommand(oss.str());
         return *this;

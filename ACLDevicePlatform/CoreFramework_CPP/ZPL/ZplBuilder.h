@@ -92,9 +92,10 @@ namespace ZPL {
          * @param width Block width in dots
          * @param lines Number of lines
          * @param text Text content
+         * @param alignment Text alignment (L, C, R, J). Default is 'L'.
          * @return Reference to this builder for chaining
          */
-        ZplBuilder& AddFieldBlock(int x, int y, int width, int lines, const std::string& text);
+        ZplBuilder& AddFieldBlock(int x, int y, int width, int lines, const std::string& text, char alignment = 'L');
 
         /**
          * @brief Add a graphic box (filled rectangle)
