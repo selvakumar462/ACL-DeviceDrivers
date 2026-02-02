@@ -1,0 +1,1 @@
+if(is_error_code(scan_result)) { return ERROR; } else { process_barcode(scan_result); }

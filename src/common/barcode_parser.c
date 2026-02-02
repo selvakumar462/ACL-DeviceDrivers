@@ -1,0 +1,1 @@
+bool isValidBarcode(const char* payload) { return !is_error_code(payload); }
