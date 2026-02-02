@@ -211,8 +211,18 @@ namespace ZQ521 {
 
     bool ZQ521Driver::ValidateResponse(const std::string& response) {
         // Basic validation - check if response contains expected content
-        // For ZQ521, responses are typically simple status indicators
-        return !response.empty();
+        if (response.empty()) {
+            return false;
+        }
+
+        // Check for error keywords
+        if (response.find("ERROR") != std::string::npos || 
+            response.find("Error") != std::string::npos || 
+            response.find("FAIL") != std::string::npos) {
+            return false;
+        }
+
+        return true;
     }
 
 } // namespace ZQ521
