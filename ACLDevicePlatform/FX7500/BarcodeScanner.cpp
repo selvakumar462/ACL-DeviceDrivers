@@ -1,0 +1,1 @@
+if (isErrorCode(scanResult)) { logError(scanResult); return BARCODE_ERROR; } else { logSuccess(scanResult); return scanResult; }
